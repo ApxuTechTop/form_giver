@@ -1,2 +1,6 @@
 test:
-	curl -X POST -d 'user_email=test@example.com&user_phone=%2B7 123 456 78 90&user_name=John Doe' http://localhost:5000/get_form
+	./app_test.sh
+build:
+	docker build -t form_giver .
+run:
+	docker run -e DB_PATH="data/forms.json" -d --volume "./data/:/app/data/" -p5000:5000 form_giver 
